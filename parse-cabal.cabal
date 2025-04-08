@@ -4,16 +4,14 @@ version:            0.1.0.0
 synopsis:
     A simple utility for retrieving information from a .cabal file.
 
--- description:
 license:            BSD-3-Clause
 license-file:       LICENSE
 author:             Leonid Znamenok
 maintainer:         respublica@altlinux.org
--- copyright:
+
 category:           System
 build-type:         Simple
 extra-doc-files:    CHANGELOG.md
--- extra-source-files:
 
 common warnings
     ghc-options: -Wall
@@ -25,6 +23,9 @@ executable parse-cabal
     build-depends:    ,base ^>=4.18.2.1
                       ,simple-cabal >= 0.1.3
                       ,Cabal-syntax
+                      ,optparse-applicative
     hs-source-dirs:   app
     other-modules:    Utils.ParseCabal
+                     ,CLI.Datatypes.OutputStyle
+                     ,CLI.Datatypes.ReadOption
     default-language: Haskell2010
