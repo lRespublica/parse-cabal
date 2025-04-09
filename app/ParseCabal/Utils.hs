@@ -4,15 +4,15 @@ module ParseCabal.Utils (
     buildDependencies,
     PackageIdentifier (..),
     getPackageDesc,
-    getLicenseString,
+    getPkgLicenseString,
     getPkgName,
     getPkgVersion,
-    getPkgid,
+    getPkgId,
     getPkgDescriptionText,
     getPkgSynopsis,
     getPkgHomepage,
-    getBuildDepsAsString,
-    getExecutablesAsString
+    getPkgBuildDeps,
+    getPkgExecutables
  ) where
 
 import SimpleCabal (
@@ -59,8 +59,8 @@ getPackageDesc = do
     cabalFile <- findCabalFile
     readFinalPackageDescription [] cabalFile
 
-getLicenseString :: PackageDescription -> String
-getLicenseString desc = case raw of
+getPkgLicenseString :: PackageDescription -> String
+getPkgLicenseString desc = case raw of
                             Left  license -> fromSPDX license
                             Right license -> fromDistLicense license
     where raw = licenseRaw desc
@@ -92,8 +92,8 @@ getPkgName = unPackageName . pkgName . package
 getPkgVersion :: PackageDescription -> String
 getPkgVersion = showVersion . pkgVersion . package
 
-getPkgid :: PackageDescription -> String
-getPkgid pkg = name ++ "-" ++ version
+getPkgId :: PackageDescription -> String
+getPkgId pkg = name ++ "-" ++ version
     where name = getPkgName pkg
           version = getPkgVersion pkg
 
@@ -106,8 +106,8 @@ getPkgSynopsis = fromShortText . synopsis
 getPkgHomepage :: PackageDescription -> String
 getPkgHomepage = fromShortText . homepage
 
-getBuildDepsAsString :: PackageDescription -> String
-getBuildDepsAsString = intercalate "\n" . fmap unPackageName . buildDependencies
+getPkgBuildDeps :: PackageDescription -> String
+getPkgBuildDeps = intercalate "\n" . fmap unPackageName . buildDependencies
 
-getExecutablesAsString :: PackageDescription -> String
-getExecutablesAsString = intercalate "\n" . fmap (unUnqualComponentName . exeName) . executables
+getPkgExecutables :: PackageDescription -> String
+getPkgExecutables = intercalate "\n" . fmap (unUnqualComponentName . exeName) . executables
