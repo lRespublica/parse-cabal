@@ -24,6 +24,7 @@ executable parse-cabal
                       ,simple-cabal >= 0.1.3
                       ,Cabal-syntax
                       ,optparse-applicative
+                      ,extra
     hs-source-dirs:   app
     other-modules:    Utils.ParseCabal
                      ,CLI.Datatypes.OutputStyle
