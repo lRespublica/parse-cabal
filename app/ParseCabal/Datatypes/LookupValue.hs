@@ -1,12 +1,15 @@
 module ParseCabal.Datatypes.LookupValue (
     LookupValue (..),
-    allLookupValueParser
+    allLookupValueParser,
+    searchForValue
  ) where
 
 import Data.List.Extra (enumerate)
 import Data.Char (toLower)
 
 import Options.Applicative
+
+import ParseCabal.Utils
 
 data LookupValue = Name | Version | PkgId | License
                  | Description | Synopsis | Homepage
@@ -37,3 +40,14 @@ allLookupValueParser = argument lookupValueParser
    ( metavar (unwords $ "all" : lookupValuesStrings)
   <> completeWith ("all" : lookupValuesStrings)
    )
+
+searchForValue :: LookupValue -> PackageDescription -> String
+searchForValue Name = getPkgName
+searchForValue Version = getPkgVersion
+searchForValue PkgId = getPkgId
+searchForValue License = getPkgLicenseString
+searchForValue Description = getPkgDescriptionText
+searchForValue Synopsis = getPkgSynopsis
+searchForValue Homepage = getPkgHomepage
+searchForValue BuildDeps = getPkgBuildDeps
+searchForValue Executables = getPkgExecutables
