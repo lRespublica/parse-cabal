@@ -1,4 +1,4 @@
-module CLI.Datatypes.OutputStyle (
+module ParseCabal.Datatypes.OutputStyle (
     OutputStyle (..),
     outputStyleParser
  ) where

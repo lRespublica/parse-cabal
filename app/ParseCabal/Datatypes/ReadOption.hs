@@ -1,4 +1,4 @@
-module CLI.Datatypes.ReadOption (
+module ParseCabal.Datatypes.ReadOption (
     ReadOption (..),
     readOptionsParser
  ) where

@@ -1,4 +1,4 @@
-module Utils.ParseCabal (
+module ParseCabal.Utils (
     PackageDescription (..),
     readFinalPackageDescription,
     buildDependencies,

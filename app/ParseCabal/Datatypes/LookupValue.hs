@@ -1,4 +1,4 @@
-module CLI.Datatypes.LookupValue (
+module ParseCabal.Datatypes.LookupValue (
     LookupValue (..),
     allLookupValueParser
  ) where
