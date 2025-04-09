@@ -29,4 +29,5 @@ executable parse-cabal
     other-modules:    Utils.ParseCabal
                      ,CLI.Datatypes.OutputStyle
                      ,CLI.Datatypes.ReadOption
+                     ,CLI.Datatypes.LookupValue
     default-language: Haskell2010
