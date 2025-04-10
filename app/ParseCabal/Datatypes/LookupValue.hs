@@ -1,7 +1,8 @@
 module ParseCabal.Datatypes.LookupValue (
     LookupValue (..),
     allLookupValueParser,
-    searchForValue
+    searchForValue,
+    isPlural
  ) where
 
 import Data.List.Extra (enumerate)
@@ -13,7 +14,8 @@ import ParseCabal.Utils
 
 data LookupValue = Name | Version | PkgId | License
                  | Description | Synopsis | Homepage
-                 | BuildDeps | Executables  deriving (Enum, Bounded, Show, Read)
+                 | BuildDeps | Executables  deriving (Enum, Bounded, Show,
+                                                      Read, Eq, Ord)
 
 lookupValues :: [LookupValue]
 lookupValues = enumerate::[LookupValue]
@@ -51,3 +53,8 @@ searchForValue Synopsis = getPkgSynopsis
 searchForValue Homepage = getPkgHomepage
 searchForValue BuildDeps = getPkgBuildDeps
 searchForValue Executables = getPkgExecutables
+
+isPlural :: LookupValue -> Bool
+isPlural BuildDeps = True
+isPlural Executables = True
+isPlural _ = False
