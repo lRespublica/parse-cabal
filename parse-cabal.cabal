@@ -27,6 +27,7 @@ executable parse-cabal
                       ,extra
     hs-source-dirs:   app
     other-modules:    ParseCabal.Utils
+                     ,ParseCabal.Writer
                      ,ParseCabal.Datatypes.OutputStyle
                      ,ParseCabal.Datatypes.ReadOption
                      ,ParseCabal.Datatypes.LookupValue
