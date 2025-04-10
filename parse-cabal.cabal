@@ -2,7 +2,13 @@ cabal-version:      3.0
 name:               parse-cabal
 version:            1.0.0
 synopsis:
-    A simple utility for retrieving information from a .cabal file.
+    A simple utility for retrieving information from a .cabal file
+
+description:
+    The parse-cabal utility is a tool designed to retrieve information from .cabal files.
+    It is primarily intended for use in shell scripts.
+
+    The available output formats are plain text, TOML, and JSON.
 
 license:            BSD-3-Clause
 license-file:       LICENSE
